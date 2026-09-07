@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cổng Du Lịch Thông Minh Ninh Bình — Smart Tourism Portal</title>
-  <meta name="description" content="Cổng thông tin du lịch chính thống & nền tảng gợi ý lịch trình combo thông minh tỉnh Ninh Bình. Khám phá Di sản Thế giới Tràng An, Tam Cốc, Bái Đính, ẩm thực và lưu trú.">
-  <meta name="keywords" content="Ninh Bình, du lịch Ninh Bình, Tràng An, Tam Cốc, Bái Đính, Hang Múa, Cúc Phương, lịch trình Ninh Bình, combo du lịch">
-  
+  <meta name="description"
+    content="Cổng thông tin du lịch chính thống & nền tảng gợi ý lịch trình combo thông minh tỉnh Ninh Bình. Khám phá Di sản Thế giới Tràng An, Tam Cốc, Bái Đính, ẩm thực và lưu trú.">
+  <meta name="keywords"
+    content="Ninh Bình, du lịch Ninh Bình, Tràng An, Tam Cốc, Bái Đính, Hang Múa, Cúc Phương, lịch trình Ninh Bình, combo du lịch">
+
   <!-- Open Graph -->
   <meta property="og:title" content="Cổng Du Lịch Thông Minh Ninh Bình — Trải Nghiệm Di Sản Trọn Vẹn">
-  <meta property="og:description" content="Lập lịch trình thông minh theo combo, khám phá bản đồ di sản tương tác và ẩm thực đặc sản Ninh Bình.">
+  <meta property="og:description"
+    content="Lập lịch trình thông minh theo combo, khám phá bản đồ di sản tương tác và ẩm thực đặc sản Ninh Bình.">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <!-- Google Fonts: Playfair Display, Montserrat, Plus Jakarta Sans & Be Vietnam Pro -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
 
   <!-- Leaflet CSS for Interactive Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <!-- FontAwesome Icons for Travel UI -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Custom CSS (with cache buster) -->
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
+
 <body>
 
   <!-- Top Announcement Bar -->
   <div class="top-bar">
     <div class="container top-bar-content">
       <div class="top-bar-left">
-        <span class="badge-heritage"><i class="fa-solid fa-award"></i> Quần thể Danh thắng Tràng An — Di sản Kép UNESCO</span>
-        <span class="top-bar-hotline"><i class="fa-solid fa-phone-volume"></i> Đường dây nóng hỗ trợ du khách 24/7: <strong>1900 8989 - (0229) 3871 123</strong></span>
+        <span class="badge-heritage"><i class="fa-solid fa-award"></i> Quần thể Danh thắng Tràng An — Di sản Kép
+          UNESCO</span>
+        <span class="top-bar-hotline"><i class="fa-solid fa-phone-volume"></i> Đường dây nóng hỗ trợ du khách 24/7:
+          <strong>1900 8989 - (0229) 3871 123</strong></span>
       </div>
       <div class="top-bar-right">
         <!-- Dashboard Sở Du lịch trigger -->
-        <button id="btnOpenDashboard" class="topbar-btn"><i class="fa-solid fa-chart-line"></i> <span data-i18n="top_dashboard">Dashboard Sở Du Lịch</span></button>
+        <button id="btnOpenDashboard" class="topbar-btn"><i class="fa-solid fa-chart-line"></i> <span
+            data-i18n="top_dashboard">Dashboard Sở Du Lịch</span></button>
         <!-- Language Switcher -->
         <div class="lang-switch">
           <button id="langVi" class="lang-btn active">🇻🇳 VI</button>
@@ -64,7 +75,8 @@
       <!-- Desktop Navigation Menu -->
       <nav class="nav-menu" id="navMenu">
         <a href="#hero" class="nav-link active" data-i18n="nav_home">Trang chủ</a>
-        <a href="#combo-section" class="nav-link highlight-link"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="nav_combo">Combo Lịch Trình</span></a>
+        <a href="#combo-section" class="nav-link highlight-link"><i class="fa-solid fa-wand-magic-sparkles"></i> <span
+            data-i18n="nav_combo">Combo Lịch Trình</span></a>
         <a href="#explore-map" class="nav-link" data-i18n="nav_explore">Khám phá & Bản đồ</a>
         <a href="#cuisine-section" class="nav-link" data-i18n="nav_cuisine">Ẩm thực</a>
         <a href="#stay-section" class="nav-link" data-i18n="nav_stay">Lưu trú</a>
@@ -91,17 +103,25 @@
 
   <!-- HERO SECTION: Điểm nhấn hình ảnh, tìm kiếm nhanh, gợi ý theo mùa -->
   <section class="hero-section" id="hero">
+    <!-- Dynamic Alternating Hero Background Slideshow -->
+    <div class="hero-slideshow" id="heroSlideshow">
+      <div class="hero-slide active" style="background-image: url('hero-tamcoc.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('hero-trangan.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('hero-hangmua.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('hero-baidinh.jpg');"></div>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-content container">
       <div class="hero-badge animate-fade-in">
-        <i class="fa-solid fa-compass"></i> <span data-i18n="hero_badge">Cổng thông tin du lịch thông minh chính thống tỉnh Ninh Bình</span>
+        <i class="fa-solid fa-compass"></i> <span data-i18n="hero_badge">Cổng thông tin du lịch thông minh chính thống
+          tỉnh Ninh Bình</span>
       </div>
       <h1 class="hero-title animate-slide-up" data-i18n="hero_title">
         Chạm Vào Kỳ Quan <br>
-        <span class="gradient-text">Non Nước Ninh Bình</span>
+        <span class="gradient-text">Tuyệt Tác Miền Di Sản</span>
       </h1>
       <p class="hero-subtitle animate-slide-up delay-1" data-i18n="hero_desc">
-        Hệ thống gợi ý lịch trình thông minh đầu tiên tại Việt Nam, tối ưu tuyến đường, chi phí thực tế và kết nối trực tiếp đối tác dịch vụ lữ hành uy tín.
+        Lên lịch trình thông minh, tối ưu ngân sách và khám phá Ninh Bình theo cách riêng của bạn.
       </p>
 
       <!-- Quick Search / Filter Bar -->
@@ -157,12 +177,24 @@
       <div class="seasonal-suggestions">
         <span class="seasonal-label"><i class="fa-solid fa-fire"></i> Gợi ý theo mùa du lịch:</span>
         <div class="seasonal-chips">
-          <button class="season-chip active" data-filter="mua-lua"><i class="fa-solid fa-wheat-awn"></i> Mùa Lúa Vàng Tam Cốc (T5 - T6)</button>
-          <button class="season-chip" data-filter="mua-sen"><i class="fa-solid fa-spa"></i> Mùa Sen Hang Múa (T6 - T8)</button>
-          <button class="season-chip" data-filter="le-hoi"><i class="fa-solid fa-bell"></i> Trẩy Hội Bái Đính Đầu Xuân (T1 - T3)</button>
-          <button class="season-chip" data-filter="mua-buom"><i class="fa-solid fa-seedling"></i> Mùa Bướm Rừng Cúc Phương (T4 - T5)</button>
+          <button class="season-chip active" data-filter="mua-lua"><i class="fa-solid fa-wheat-awn"></i> Mùa Lúa Vàng
+            Tam Cốc (T5 - T6)</button>
+          <button class="season-chip" data-filter="mua-sen"><i class="fa-solid fa-spa"></i> Mùa Sen Hang Múa (T6 -
+            T8)</button>
+          <button class="season-chip" data-filter="le-hoi"><i class="fa-solid fa-bell"></i> Trẩy Hội Bái Đính Đầu Xuân
+            (T1 - T3)</button>
+          <button class="season-chip" data-filter="mua-buom"><i class="fa-solid fa-seedling"></i> Mùa Bướm Rừng Cúc
+            Phương (T4 - T5)</button>
         </div>
       </div>
+    </div>
+
+    <!-- Slideshow Indicator Dots -->
+    <div class="hero-slide-dots" id="heroDots">
+      <button class="hero-dot active" data-slide="0" aria-label="Tam Cốc"></button>
+      <button class="hero-dot" data-slide="1" aria-label="Tràng An"></button>
+      <button class="hero-dot" data-slide="2" aria-label="Hang Múa"></button>
+      <button class="hero-dot" data-slide="3" aria-label="Bái Đính"></button>
     </div>
   </section>
 
@@ -197,7 +229,8 @@
         <div class="sub-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> TÍNH NĂNG KHÁC BIỆT HOÁ TRỌNG TÂM</div>
         <h2 class="section-title">Trình Lập & Tùy Biến Lịch Trình Combo Thông Minh</h2>
         <p class="section-desc">
-          Rút ngắn hành trình ra quyết định: Chọn tiêu chí &rarr; Nhận combo tối ưu &rarr; Tùy chỉnh lịch trình theo ý bạn &rarr; Xuất file PDF & Đặt dịch vụ trọn gói trực tiếp.
+          Rút ngắn hành trình ra quyết định: Chọn tiêu chí &rarr; Nhận combo tối ưu &rarr; Tùy chỉnh lịch trình theo ý
+          bạn &rarr; Xuất file PDF & Đặt dịch vụ trọn gói trực tiếp.
         </p>
       </div>
 
@@ -240,7 +273,7 @@
       <div class="wizard-pane active" id="stepPane1">
         <div class="filter-card">
           <h3 class="card-subtitle"><i class="fa-solid fa-sliders"></i> Thiết lập nhu cầu chuyến đi của bạn</h3>
-          
+
           <div class="criteria-grid">
             <!-- Thời lượng -->
             <div class="criteria-group">
@@ -259,7 +292,8 @@
               <div class="radio-pill-group" id="optAudience">
                 <button type="button" class="pill-btn" data-val="solo">Khách công tác / Solo</button>
                 <button type="button" class="pill-btn" data-val="couple">Cặp đôi / Bạn thân</button>
-                <button type="button" class="pill-btn active" data-val="family">Gia đình (Trẻ em/Người cao tuổi)</button>
+                <button type="button" class="pill-btn active" data-val="family">Gia đình (Trẻ em/Người cao
+                  tuổi)</button>
                 <button type="button" class="pill-btn" data-val="group">Nhóm bạn trẻ / Trekking</button>
               </div>
             </div>
@@ -289,7 +323,8 @@
 
           <div class="wizard-actions text-center mt-4">
             <button id="btnProceedToStep2" class="btn btn-primary btn-lg pulse-glow">
-              <i class="fa-solid fa-sparkles"></i> Phân Tích & Gợi Ý Combo Tối Ưu <i class="fa-solid fa-arrow-right"></i>
+              <i class="fa-solid fa-sparkles"></i> Phân Tích & Gợi Ý Combo Tối Ưu <i
+                class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
         </div>
@@ -299,7 +334,8 @@
       <div class="wizard-pane" id="stepPane2">
         <div class="step-header-flex">
           <div>
-            <span class="tag-matched"><i class="fa-solid fa-check"></i> Đã tìm thấy 4 Combo tiêu chuẩn xây dựng cùng Lữ hành uy tín</span>
+            <span class="tag-matched"><i class="fa-solid fa-check"></i> Đã tìm thấy 4 Combo tiêu chuẩn xây dựng cùng Lữ
+              hành uy tín</span>
             <h3 class="card-subtitle mt-1">Chọn Combo phù hợp nhất để bắt đầu tùy biến</h3>
           </div>
           <button class="btn btn-outline btn-sm" id="btnBackToStep1">
@@ -313,13 +349,15 @@
           <div class="combo-card" data-combo-id="combo1">
             <div class="combo-badge-top">1 Ngày • Siêu Tiết Kiệm</div>
             <div class="combo-img-wrap">
-              <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=700&q=80" alt="Tam Cốc Bích Động" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=700&q=80"
+                alt="Tam Cốc Bích Động" loading="lazy">
               <span class="combo-duration-tag"><i class="fa-regular fa-clock"></i> 1 Ngày (8h - 18h)</span>
             </div>
             <div class="combo-body">
               <h4 class="combo-title">Ninh Bình Trong Ngày: Tam Cốc – Chùa Bái Đính</h4>
-              <p class="combo-desc">Phù hợp khách quá cảnh, công tác, có ít thời gian nhưng vẫn muốn chiêm bái đại bảo tháp và ngắm dòng sông Ngô Đồng.</p>
-              
+              <p class="combo-desc">Phù hợp khách quá cảnh, công tác, có ít thời gian nhưng vẫn muốn chiêm bái đại bảo
+                tháp và ngắm dòng sông Ngô Đồng.</p>
+
               <div class="combo-stops">
                 <span class="stop-pill"><i class="fa-solid fa-location-dot"></i> Chùa Bái Đính</span>
                 <span class="stop-arrow">&rarr;</span>
@@ -345,13 +383,15 @@
             <div class="featured-ribbon"><i class="fa-solid fa-star"></i> Phổ biến nhất (Gia đình)</div>
             <div class="combo-badge-top">2 Ngày 1 Đêm • Di sản UNESCO</div>
             <div class="combo-img-wrap">
-              <img src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?auto=format&fit=crop&w=700&q=80" alt="Tràng An Ninh Bình" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?auto=format&fit=crop&w=700&q=80"
+                alt="Tràng An Ninh Bình" loading="lazy">
               <span class="combo-duration-tag"><i class="fa-regular fa-clock"></i> 2 Ngày 1 Đêm</span>
             </div>
             <div class="combo-body">
               <h4 class="combo-title">Khám Phá Di Sản Tràng An – Cố Đô Hoa Lư</h4>
-              <p class="combo-desc">Hành trình chuẩn mực kết hợp du thuyền hang động Tràng An, tìm hiểu lịch sử Cố đô Hoa Lư, chinh phục đỉnh Hang Múa và ẩm thực đặc sản.</p>
-              
+              <p class="combo-desc">Hành trình chuẩn mực kết hợp du thuyền hang động Tràng An, tìm hiểu lịch sử Cố đô
+                Hoa Lư, chinh phục đỉnh Hang Múa và ẩm thực đặc sản.</p>
+
               <div class="combo-stops">
                 <span class="stop-pill"><i class="fa-solid fa-archway"></i> Cố Đô Hoa Lư</span>
                 <span class="stop-arrow">&rarr;</span>
@@ -377,13 +417,15 @@
           <div class="combo-card" data-combo-id="combo3">
             <div class="combo-badge-top">3 Ngày 2 Đêm • Sinh Thái & Mạo Hiểm</div>
             <div class="combo-img-wrap">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Cúc Phương Ninh Bình" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80"
+                alt="Cúc Phương Ninh Bình" loading="lazy">
               <span class="combo-duration-tag"><i class="fa-regular fa-clock"></i> 3 Ngày 2 Đêm</span>
             </div>
             <div class="combo-body">
               <h4 class="combo-title">Ninh Bình Hoang Sơ: Vườn Cúc Phương – Bản Mường</h4>
-              <p class="combo-desc">Trekking xuyên rừng nguyên sinh Cúc Phương, thăm cây Chò ngàn năm, cắm trại qua đêm, giao lưu văn hóa Mường và trải nghiệm làm gốm Bồ Bát.</p>
-              
+              <p class="combo-desc">Trekking xuyên rừng nguyên sinh Cúc Phương, thăm cây Chò ngàn năm, cắm trại qua đêm,
+                giao lưu văn hóa Mường và trải nghiệm làm gốm Bồ Bát.</p>
+
               <div class="combo-stops">
                 <span class="stop-pill"><i class="fa-solid fa-tree"></i> Rừng Cúc Phương</span>
                 <span class="stop-arrow">&rarr;</span>
@@ -408,13 +450,15 @@
           <div class="combo-card" data-combo-id="combo4">
             <div class="combo-badge-top">2 Ngày 1 Đêm • Song Ngữ Anh - Việt</div>
             <div class="combo-img-wrap">
-              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=700&q=80" alt="Du khách quốc tế" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=700&q=80"
+                alt="Du khách quốc tế" loading="lazy">
               <span class="combo-duration-tag"><i class="fa-regular fa-clock"></i> 2 Ngày 1 Đêm (English Guide)</span>
             </div>
             <div class="combo-body">
               <h4 class="combo-title">Ninh Binh Heritage & Culture (For International Travelers)</h4>
-              <p class="combo-desc">Dịch vụ chuẩn quốc tế, xe Limousine Dcar đưa đón tận nơi, hướng dẫn viên song ngữ hiểu sâu văn hóa di sản UNESCO, đạp xe qua đồng lúa Tam Cốc.</p>
-              
+              <p class="combo-desc">Dịch vụ chuẩn quốc tế, xe Limousine Dcar đưa đón tận nơi, hướng dẫn viên song ngữ
+                hiểu sâu văn hóa di sản UNESCO, đạp xe qua đồng lúa Tam Cốc.</p>
+
               <div class="combo-stops">
                 <span class="stop-pill"><i class="fa-solid fa-van-shuttle"></i> Limousine VIP</span>
                 <span class="stop-arrow">&rarr;</span>
@@ -441,7 +485,8 @@
       <div class="wizard-pane" id="stepPane3">
         <div class="step-header-flex">
           <div>
-            <span class="tag-matched"><i class="fa-solid fa-pen-to-square"></i> Đang chỉnh sửa: <strong id="currentEditingComboName">Khám Phá Di Sản Tràng An – Cố Đô Hoa Lư (2N1Đ)</strong></span>
+            <span class="tag-matched"><i class="fa-solid fa-pen-to-square"></i> Đang chỉnh sửa: <strong
+                id="currentEditingComboName">Khám Phá Di Sản Tràng An – Cố Đô Hoa Lư (2N1Đ)</strong></span>
             <h3 class="card-subtitle mt-1">Thêm/Bớt điểm đến, đổi lưu trú & phương tiện di chuyển</h3>
           </div>
           <button class="btn btn-outline btn-sm" id="btnBackToStep2">
@@ -506,7 +551,8 @@
 
               <!-- Thêm điểm dừng -->
               <div class="add-slot-bar">
-                <button class="btn-add-extra-slot" id="btnAddStopDay1"><i class="fa-solid fa-plus"></i> Thêm điểm dừng tham quan vào Ngày 1</button>
+                <button class="btn-add-extra-slot" id="btnAddStopDay1"><i class="fa-solid fa-plus"></i> Thêm điểm dừng
+                  tham quan vào Ngày 1</button>
               </div>
             </div>
 
@@ -534,7 +580,8 @@
                   <span class="slot-time"><i class="fa-regular fa-clock"></i> 09:30 - 12:00</span>
                   <div class="slot-content">
                     <h5>Chiêm bái Quần thể Chùa Bái Đính (Hành lang 500 vị La Hán)</h5>
-                    <p>Ngôi chùa nắm giữ nhiều kỷ lục Châu Á nhất: Chuông đồng lớn nhất, tượng Phật bằng đồng dát vàng.</p>
+                    <p>Ngôi chùa nắm giữ nhiều kỷ lục Châu Á nhất: Chuông đồng lớn nhất, tượng Phật bằng đồng dát vàng.
+                    </p>
                   </div>
                   <span class="slot-tag-badge">Tâm linh</span>
                   <button class="btn-remove-slot" title="Bỏ điểm này"><i class="fa-solid fa-xmark"></i></button>
@@ -552,7 +599,8 @@
               </div>
 
               <div class="add-slot-bar">
-                <button class="btn-add-extra-slot" id="btnAddStopDay2"><i class="fa-solid fa-plus"></i> Thêm điểm dừng tham quan vào Ngày 2</button>
+                <button class="btn-add-extra-slot" id="btnAddStopDay2"><i class="fa-solid fa-plus"></i> Thêm điểm dừng
+                  tham quan vào Ngày 2</button>
               </div>
             </div>
           </div>
@@ -561,7 +609,7 @@
           <div class="customizer-sidebar">
             <div class="summary-box">
               <h4 class="summary-title"><i class="fa-solid fa-calculator"></i> Bảng Dự Toán Chi Phí Tự Động</h4>
-              
+
               <div class="setting-group">
                 <label class="setting-label"><i class="fa-solid fa-hotel"></i> Lựa chọn Nơi lưu trú (1 Đêm):</label>
                 <select id="selectHotelChoice" class="custom-select">
@@ -572,7 +620,8 @@
               </div>
 
               <div class="setting-group">
-                <label class="setting-label"><i class="fa-solid fa-car-side"></i> Phương tiện di chuyển nội tỉnh:</label>
+                <label class="setting-label"><i class="fa-solid fa-car-side"></i> Phương tiện di chuyển nội
+                  tỉnh:</label>
                 <select id="selectTransportChoice" class="custom-select">
                   <option value="bike">Thuê xe máy tự túc (150.000₫/xe/ngày)</option>
                   <option value="taxi" selected>Xe 4/7 chỗ đưa đón trọn gói các điểm (500.000₫/người)</option>
@@ -586,7 +635,8 @@
                   <input type="checkbox" id="chkGuide" checked> Hướng dẫn viên bản địa (thuyết minh di sản) (+200.000₫)
                 </label>
                 <label class="checkbox-label">
-                  <input type="checkbox" id="chkInsurance" checked> Bảo hiểm du lịch trọn gói theo Sở ban hành (+30.000₫)
+                  <input type="checkbox" id="chkInsurance" checked> Bảo hiểm du lịch trọn gói theo Sở ban hành
+                  (+30.000₫)
                 </label>
               </div>
 
@@ -648,7 +698,8 @@
               <i class="fa-solid fa-mountain-sun"></i>
               <div>
                 <h3>CỔNG DU LỊCH THÔNG MINH NINH BÌNH</h3>
-                <p>Mã Lịch Trình: <strong>#NB-COMBO-2026-889</strong> • Ngày lập: <span id="currentDateSpan">07/09/2026</span></p>
+                <p>Mã Lịch Trình: <strong>#NB-COMBO-2026-889</strong> • Ngày lập: <span
+                    id="currentDateSpan">07/09/2026</span></p>
               </div>
             </div>
             <div class="itinerary-qr-mock">
@@ -679,25 +730,26 @@
 
           <!-- Printable Schedule -->
           <div class="itinerary-schedule-print">
-            <h4 class="print-section-title"><i class="fa-solid fa-route"></i> Tuyến Trình Di Chuyển Khuyến Nghị Thực Tế</h4>
+            <h4 class="print-section-title"><i class="fa-solid fa-route"></i> Tuyến Trình Di Chuyển Khuyến Nghị Thực Tế
+            </h4>
             <div class="print-timeline">
               <div class="print-day">
                 <div class="print-day-badge">NGÀY 1</div>
                 <div class="print-stops-flow">
-                  <strong>08:30:</strong> Cố Đô Hoa Lư &rarr; 
-                  <strong>11:45:</strong> Ẩm thực Dê Núi Chính Thư &rarr; 
-                  <strong>13:30:</strong> Du thuyền Nan Tràng An Tuyến 3 &rarr; 
-                  <strong>17:30:</strong> Check-in Homestay nghỉ ngơi &rarr; 
+                  <strong>08:30:</strong> Cố Đô Hoa Lư &rarr;
+                  <strong>11:45:</strong> Ẩm thực Dê Núi Chính Thư &rarr;
+                  <strong>13:30:</strong> Du thuyền Nan Tràng An Tuyến 3 &rarr;
+                  <strong>17:30:</strong> Check-in Homestay nghỉ ngơi &rarr;
                   <strong>19:30:</strong> Phố Cổ Hoa Lư lung linh về đêm.
                 </div>
               </div>
               <div class="print-day">
                 <div class="print-day-badge">NGÀY 2</div>
                 <div class="print-stops-flow">
-                  <strong>06:30:</strong> Đỉnh Ngọa Long Hang Múa &rarr; 
-                  <strong>09:30:</strong> Quần thể Chùa Bái Đính &rarr; 
-                  <strong>12:30:</strong> Cơm niêu & Ốc núi Ninh Bình &rarr; 
-                  <strong>14:00:</strong> Mua đặc sản OCOP &rarr; 
+                  <strong>06:30:</strong> Đỉnh Ngọa Long Hang Múa &rarr;
+                  <strong>09:30:</strong> Quần thể Chùa Bái Đính &rarr;
+                  <strong>12:30:</strong> Cơm niêu & Ốc núi Ninh Bình &rarr;
+                  <strong>14:00:</strong> Mua đặc sản OCOP &rarr;
                   <strong>16:00:</strong> Xe đưa đón về Hà Nội.
                 </div>
               </div>
@@ -708,7 +760,8 @@
               <i class="fa-solid fa-shield-halved"></i>
               <div>
                 <strong>Lưu ý từ Sở Du lịch Ninh Bình:</strong>
-                Mặc áo phao 100% thời gian khi ngồi thuyền Tràng An/Tam Cốc; Trang phục kín đáo lịch sự khi chiêm bái chùa cổ; Giữ gìn vệ sinh di sản không xả rác. Hotline cứu trợ khẩn cấp: 1900 8989.
+                Mặc áo phao 100% thời gian khi ngồi thuyền Tràng An/Tam Cốc; Trang phục kín đáo lịch sự khi chiêm bái
+                chùa cổ; Giữ gìn vệ sinh di sản không xả rác. Hotline cứu trợ khẩn cấp: 1900 8989.
               </div>
             </div>
           </div>
@@ -741,7 +794,8 @@
         <div class="sub-badge"><i class="fa-solid fa-map-location-dot"></i> BẢN ĐỒ DU LỊCH SỐ TƯƠNG TÁC</div>
         <h2 class="section-title">Khám Phá Toàn Diện Danh Thắng Ninh Bình</h2>
         <p class="section-desc">
-          Bản đồ tích hợp tọa độ GPS thực tế, hệ thống lọc thông minh theo loại hình di sản, hang động, tâm linh và hỗ trợ định tuyến khoảng cách.
+          Bản đồ tích hợp tọa độ GPS thực tế, hệ thống lọc thông minh theo loại hình di sản, hang động, tâm linh và hỗ
+          trợ định tuyến khoảng cách.
         </p>
       </div>
 
@@ -791,19 +845,22 @@
       <div class="section-header text-center">
         <div class="sub-badge"><i class="fa-solid fa-utensils"></i> HƯƠNG VỊ ĐẤT CỐ ĐÔ</div>
         <h2 class="section-title">Ẩm Thực & Đặc Sản Nức Tiếng</h2>
-        <p class="section-desc">Khám phá văn hóa ẩm thực độc nhất vô nhị: Dê núi ăn lá thảo dược, cơm cháy giòn rụm sốt dê nếp thơm và ốc đá kỳ thú.</p>
+        <p class="section-desc">Khám phá văn hóa ẩm thực độc nhất vô nhị: Dê núi ăn lá thảo dược, cơm cháy giòn rụm sốt
+          dê nếp thơm và ốc đá kỳ thú.</p>
       </div>
 
       <div class="cuisine-grid">
         <!-- Món 1: Dê núi -->
         <div class="cuisine-card">
           <div class="cuisine-img-wrap">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Thịt dê núi Ninh Bình" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+              alt="Thịt dê núi Ninh Bình" loading="lazy">
             <span class="cuisine-badge">Đặc sản số 1</span>
           </div>
           <div class="cuisine-info">
             <h4>Dê Núi Tái Chanh & Dê Nướng Tảng</h4>
-            <p>Thịt dê núi săn chắc do leo đá vôi ăn lá cây thuốc tự nhiên, vị ngọt đậm đà, không ngấy. Ăn kèm chuối chát, khế chua và tương gừng.</p>
+            <p>Thịt dê núi săn chắc do leo đá vôi ăn lá cây thuốc tự nhiên, vị ngọt đậm đà, không ngấy. Ăn kèm chuối
+              chát, khế chua và tương gừng.</p>
             <div class="cuisine-spots">
               <i class="fa-solid fa-shop"></i> Quán gợi ý: <strong>Dê Chính Thư, Hoàng Giang, Thăng Long</strong>
             </div>
@@ -813,12 +870,14 @@
         <!-- Món 2: Cơm cháy -->
         <div class="cuisine-card">
           <div class="cuisine-img-wrap">
-            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="Cơm cháy Ninh Bình" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"
+              alt="Cơm cháy Ninh Bình" loading="lazy">
             <span class="cuisine-badge">OCOP 4 Sao</span>
           </div>
           <div class="cuisine-info">
             <h4>Cơm Cháy Ruốc Sốt Dê Cay</h4>
-            <p>Hạt gạo nếp hương chiên vàng ruộm, giòn xốp rôm rốp. Chấm cùng bát sốt tim cật dê nóng hổi béo ngậy hoặc xốt mỡ hành thơm nức.</p>
+            <p>Hạt gạo nếp hương chiên vàng ruộm, giòn xốp rôm rốp. Chấm cùng bát sốt tim cật dê nóng hổi béo ngậy hoặc
+              xốt mỡ hành thơm nức.</p>
             <div class="cuisine-spots">
               <i class="fa-solid fa-shop"></i> Cơ sở: <strong>Cơm Cháy Hoa Lư, Cơm Cháy Xích Thổ</strong>
             </div>
@@ -828,12 +887,14 @@
         <!-- Món 3: Ốc núi -->
         <div class="cuisine-card">
           <div class="cuisine-img-wrap">
-            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Ốc núi Tam Điệp" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80"
+              alt="Ốc núi Tam Điệp" loading="lazy">
             <span class="cuisine-badge">Mùa mưa (T4 - T8)</span>
           </div>
           <div class="cuisine-info">
             <h4>Ốc Núi Hấp Xả Gừng Tam Điệp</h4>
-            <p>Loài ốc sống trong hang đá chỉ bò ra vào mùa mưa ăn thảo dược, thịt dai giòn sần sật mang vị thuốc thanh mát đặc trưng.</p>
+            <p>Loài ốc sống trong hang đá chỉ bò ra vào mùa mưa ăn thảo dược, thịt dai giòn sần sật mang vị thuốc thanh
+              mát đặc trưng.</p>
             <div class="cuisine-spots">
               <i class="fa-solid fa-shop"></i> Quán gợi ý: <strong>Khu vực Tam Điệp & Nho Quan</strong>
             </div>
@@ -843,12 +904,14 @@
         <!-- Món 4: Nem Yên Mạc -->
         <div class="cuisine-card">
           <div class="cuisine-img-wrap">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Nem Yên Mạc" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+              alt="Nem Yên Mạc" loading="lazy">
             <span class="cuisine-badge">Di sản ẩm thực</span>
           </div>
           <div class="cuisine-info">
             <h4>Nem Chua Yên Mạc Tiến Vua</h4>
-            <p>Đặc sản có từ thời Cung đình Huế truyền lại, bì lợn thái chỉ thủ công trộn thính thơm lừng, cuốn lá sung và chấm nước mắm chanh tỏi.</p>
+            <p>Đặc sản có từ thời Cung đình Huế truyền lại, bì lợn thái chỉ thủ công trộn thính thơm lừng, cuốn lá sung
+              và chấm nước mắm chanh tỏi.</p>
             <div class="cuisine-spots">
               <i class="fa-solid fa-shop"></i> Địa chỉ: <strong>Làng nghề Yên Mạc, Yên Mô</strong>
             </div>
@@ -867,14 +930,16 @@
       <div class="section-header text-center">
         <div class="sub-badge"><i class="fa-solid fa-hotel"></i> LƯU TRÚ CHẤT LƯỢNG CAO</div>
         <h2 class="section-title">Khách Sạn, Homestay & Resort Nghỉ Dưỡng</h2>
-        <p class="section-desc">Liên kết thông minh với các đối tác Booking.com, Agoda và đặt phòng trực tiếp không qua trung gian.</p>
+        <p class="section-desc">Liên kết thông minh với các đối tác Booking.com, Agoda và đặt phòng trực tiếp không qua
+          trung gian.</p>
       </div>
 
       <div class="stay-grid">
         <!-- Stay 1 -->
         <div class="stay-card">
           <div class="stay-img">
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Emeralda Resort Ninh Binh" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"
+              alt="Emeralda Resort Ninh Binh" loading="lazy">
             <span class="stay-tag">Resort 5 Sao</span>
           </div>
           <div class="stay-details">
@@ -883,7 +948,8 @@
             <p class="stay-loc"><i class="fa-solid fa-location-dot"></i> Đầm Vân Long, Gia Viễn</p>
             <div class="stay-price-row">
               <span class="stay-price">2.450.000 ₫ <sub>/đêm</sub></span>
-              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer"
+                class="btn btn-outline btn-sm">
                 Đặt qua Agoda/OTA <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
@@ -893,7 +959,8 @@
         <!-- Stay 2 -->
         <div class="stay-card">
           <div class="stay-img">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="Aravinda Resort" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80"
+              alt="Aravinda Resort" loading="lazy">
             <span class="stay-tag">Luxury Eco</span>
           </div>
           <div class="stay-details">
@@ -902,7 +969,8 @@
             <p class="stay-loc"><i class="fa-solid fa-location-dot"></i> Hải Nham, Hoa Lư (Gần Tam Cốc)</p>
             <div class="stay-price-row">
               <span class="stay-price">2.100.000 ₫ <sub>/đêm</sub></span>
-              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer"
+                class="btn btn-outline btn-sm">
                 Đặt qua Agoda/OTA <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
@@ -912,7 +980,8 @@
         <!-- Stay 3 -->
         <div class="stay-card">
           <div class="stay-img">
-            <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=600&q=80" alt="Trang An Eco Homestay" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=600&q=80"
+              alt="Trang An Eco Homestay" loading="lazy">
             <span class="stay-tag">Homestay Bản Địa</span>
           </div>
           <div class="stay-details">
@@ -921,7 +990,8 @@
             <p class="stay-loc"><i class="fa-solid fa-location-dot"></i> Ninh Xuân, Hoa Lư</p>
             <div class="stay-price-row">
               <span class="stay-price">550.000 ₫ <sub>/đêm</sub></span>
-              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer"
+                class="btn btn-outline btn-sm">
                 Đặt qua Agoda/OTA <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </a>
             </div>
@@ -940,7 +1010,8 @@
       <div class="section-header text-center">
         <div class="sub-badge"><i class="fa-regular fa-calendar-check"></i> LỊCH VĂN HÓA TRUYỀN THỐNG</div>
         <h2 class="section-title">Lễ Hội & Sự Kiện Nổi Bật Theo Mùa</h2>
-        <p class="section-desc">Hòa mình vào không khí hào hùng của vùng đất ngàn năm kinh đô và các tuần lễ du lịch văn hóa quốc gia.</p>
+        <p class="section-desc">Hòa mình vào không khí hào hùng của vùng đất ngàn năm kinh đô và các tuần lễ du lịch văn
+          hóa quốc gia.</p>
       </div>
 
       <div class="events-timeline-list">
@@ -952,7 +1023,8 @@
           </div>
           <div class="event-content">
             <h4>Lễ Hội Chùa Bái Đính Khai Xuân</h4>
-            <p>Lễ hội tâm linh quy mô lớn nhất miền Bắc thu hút hàng vạn Phật tử chiêm bái, rước kiệu, cầu quốc thái dân an đầu năm.</p>
+            <p>Lễ hội tâm linh quy mô lớn nhất miền Bắc thu hút hàng vạn Phật tử chiêm bái, rước kiệu, cầu quốc thái dân
+              an đầu năm.</p>
             <div class="event-meta">
               <span><i class="fa-solid fa-location-dot"></i> Xã Gia Sinh, Huyện Gia Viễn</span>
               <span class="event-status status-upcoming">Thường niên</span>
@@ -968,7 +1040,8 @@
           </div>
           <div class="event-content">
             <h4>Lễ Hội Truyền Thống Cố Đô Hoa Lư</h4>
-            <p>Tưởng nhớ công đức Vua Đinh Tiên Hoàng và Vua Lê Đại Hành. Các nghi thức rước nước sông Hoàng Long, trò chơi dân gian cờ lau tập trận.</p>
+            <p>Tưởng nhớ công đức Vua Đinh Tiên Hoàng và Vua Lê Đại Hành. Các nghi thức rước nước sông Hoàng Long, trò
+              chơi dân gian cờ lau tập trận.</p>
             <div class="event-meta">
               <span><i class="fa-solid fa-location-dot"></i> Khu di tích Cố Đô Hoa Lư</span>
               <span class="event-status">Di sản Quốc gia</span>
@@ -984,7 +1057,8 @@
           </div>
           <div class="event-content">
             <h4>Tuần Du Lịch Ninh Bình "Sắc Vàng Tam Cốc - Tràng An"</h4>
-            <p>Chiêm ngưỡng bức tranh bích họa khổng lồ trên cánh đồng lúa Tam Cốc chín vàng rực rỡ, biểu diễn nhạc cụ dân tộc trên dòng sông Ngô Đồng.</p>
+            <p>Chiêm ngưỡng bức tranh bích họa khổng lồ trên cánh đồng lúa Tam Cốc chín vàng rực rỡ, biểu diễn nhạc cụ
+              dân tộc trên dòng sông Ngô Đồng.</p>
             <div class="event-meta">
               <span><i class="fa-solid fa-location-dot"></i> Khu du lịch Tam Cốc - Bích Động</span>
               <span class="event-status status-highlight">Sự kiện Điểm nhấn</span>
@@ -1006,26 +1080,30 @@
         <div class="guide-col">
           <div class="sub-badge"><i class="fa-solid fa-book-open"></i> HƯỚNG DẪN TIỆN ÍCH</div>
           <h3 class="guide-title">Cẩm Nang Di Chuyển & An Toàn</h3>
-          
+
           <div class="accordion-list">
             <details class="accordion-item" open>
               <summary><i class="fa-solid fa-van-shuttle"></i> Hướng dẫn di chuyển từ Hà Nội & Sân bay Nội Bài</summary>
               <div class="accordion-content">
-                Khoảng cách chỉ 95km qua cao tốc Hà Nội – Ninh Bình (thời gian di chuyển 1 giờ 20 phút). Xe Limousine chất lượng cao đón trả tận nơi tại Hà Nội xuất bến mỗi 30 phút (giá 150.000 - 180.000₫/lượt). Ngoài ra có thể đi tàu hỏa (ga Ninh Bình ngay trung tâm).
+                Khoảng cách chỉ 95km qua cao tốc Hà Nội – Ninh Bình (thời gian di chuyển 1 giờ 20 phút). Xe Limousine
+                chất lượng cao đón trả tận nơi tại Hà Nội xuất bến mỗi 30 phút (giá 150.000 - 180.000₫/lượt). Ngoài ra
+                có thể đi tàu hỏa (ga Ninh Bình ngay trung tâm).
               </div>
             </details>
 
             <details class="accordion-item">
               <summary><i class="fa-solid fa-cloud-sun"></i> Thời điểm lý tưởng nhất để du lịch Ninh Bình</summary>
               <div class="accordion-content">
-                Ninh Bình đẹp 4 mùa: Mùa xuân (tháng 1-3) thích hợp du xuân tâm linh; Mùa hè (tháng 5-6) lúa chín vàng Tam Cốc; Mùa sen (tháng 6-8); Mùa thu thời tiết se mát trong vắt chèo đò thảnh thơi.
+                Ninh Bình đẹp 4 mùa: Mùa xuân (tháng 1-3) thích hợp du xuân tâm linh; Mùa hè (tháng 5-6) lúa chín vàng
+                Tam Cốc; Mùa sen (tháng 6-8); Mùa thu thời tiết se mát trong vắt chèo đò thảnh thơi.
               </div>
             </details>
 
             <details class="accordion-item">
               <summary><i class="fa-solid fa-vest-patches"></i> Quy tắc trang phục & Mẹo an toàn khi đi thuyền</summary>
               <div class="accordion-content">
-                Khi chiêm bái Bái Đính và Hoa Lư: mặc quần/váy quá đầu gối, áo có tay. Khi chèo đò Tràng An/Tam Cốc: bắt buộc cài áo phao, chuẩn bị nón lá/ô che nắng và quạt cầm tay.
+                Khi chiêm bái Bái Đính và Hoa Lư: mặc quần/váy quá đầu gối, áo có tay. Khi chèo đò Tràng An/Tam Cốc: bắt
+                buộc cài áo phao, chuẩn bị nón lá/ô che nắng và quạt cầm tay.
               </div>
             </details>
           </div>
@@ -1046,7 +1124,8 @@
                 </div>
                 <span class="review-stars"><i class="fa-solid fa-star"></i> 5.0</span>
               </div>
-              <p>"Tính năng gợi ý combo của website thực sự tiện lợi! Cả nhà mình có cả người già và trẻ con nên theo lịch trình gợi ý rất vừa sức, không bị mệt mà ngắm trọn vẹn Tràng An và Bái Đính."</p>
+              <p>"Tính năng gợi ý combo của website thực sự tiện lợi! Cả nhà mình có cả người già và trẻ con nên theo
+                lịch trình gợi ý rất vừa sức, không bị mệt mà ngắm trọn vẹn Tràng An và Bái Đính."</p>
               <span class="verified-badge"><i class="fa-solid fa-shield-check"></i> Đã kiểm duyệt bởi Sở Du Lịch</span>
             </div>
 
@@ -1059,7 +1138,8 @@
                 </div>
                 <span class="review-stars"><i class="fa-solid fa-star"></i> 5.0</span>
               </div>
-              <p>"Amazing smart itinerary feature! The bilingual information and real cost estimation made our Ninh Binh trip flawless. Biking through Tam Coc rice fields was magical."</p>
+              <p>"Amazing smart itinerary feature! The bilingual information and real cost estimation made our Ninh Binh
+                trip flawless. Biking through Tam Coc rice fields was magical."</p>
               <span class="verified-badge"><i class="fa-solid fa-shield-check"></i> Verified Review</span>
             </div>
           </div>
@@ -1082,7 +1162,8 @@
       <div class="partner-banner">
         <div class="partner-text">
           <h3><i class="fa-solid fa-handshake-angle"></i> Cổng Đăng Ký Liên Kết Dành Cho Doanh Nghiệp</h3>
-          <p>Dành cho các đơn vị lữ hành, khách sạn, nhà hàng và cơ sở đặc sản trên địa bàn tỉnh Ninh Bình. Đăng ký tham gia chuỗi cung ứng du lịch thông minh chính thống.</p>
+          <p>Dành cho các đơn vị lữ hành, khách sạn, nhà hàng và cơ sở đặc sản trên địa bàn tỉnh Ninh Bình. Đăng ký tham
+            gia chuỗi cung ứng du lịch thông minh chính thống.</p>
         </div>
         <button id="btnOpenPartnerModal" class="btn btn-light-glass">
           <i class="fa-solid fa-file-signature"></i> Đăng Ký Đối Tác Ngay
@@ -1100,11 +1181,15 @@
             </div>
           </div>
           <p>
-            Cổng Thông Tin Du Lịch Thông Minh là công trình chuyển đổi số trọng điểm của tỉnh Ninh Bình, nhằm mục tiêu nâng cao trải nghiệm của du khách trong và ngoài nước, minh bạch hóa giá cả dịch vụ, và hỗ trợ các doanh nghiệp du lịch địa phương phát triển bền vững.
+            Cổng Thông Tin Du Lịch Thông Minh là công trình chuyển đổi số trọng điểm của tỉnh Ninh Bình, nhằm mục tiêu
+            nâng cao trải nghiệm của du khách trong và ngoài nước, minh bạch hóa giá cả dịch vụ, và hỗ trợ các doanh
+            nghiệp du lịch địa phương phát triển bền vững.
           </p>
           <div class="official-contacts">
-            <span><i class="fa-solid fa-location-dot"></i> Địa chỉ: Số 06 đường Tràng An, Phường Đông Thành, TP. Ninh Bình</span>
-            <span><i class="fa-solid fa-envelope"></i> Email: sodulich@ninhbinh.gov.vn | portal@dulichninhbinh.gov.vn</span>
+            <span><i class="fa-solid fa-location-dot"></i> Địa chỉ: Số 06 đường Tràng An, Phường Đông Thành, TP. Ninh
+              Bình</span>
+            <span><i class="fa-solid fa-envelope"></i> Email: sodulich@ninhbinh.gov.vn |
+              portal@dulichninhbinh.gov.vn</span>
           </div>
         </div>
       </div>
@@ -1123,7 +1208,8 @@
             <span class="brand-sub">SMART TOURISM</span>
           </div>
         </div>
-        <p class="footer-desc">Cổng thông tin & Nền tảng số hóa du lịch thông minh, tôn vinh Di sản Văn hóa và Thiên nhiên Thế giới Quần thể Danh thắng Tràng An.</p>
+        <p class="footer-desc">Cổng thông tin & Nền tảng số hóa du lịch thông minh, tôn vinh Di sản Văn hóa và Thiên
+          nhiên Thế giới Quần thể Danh thắng Tràng An.</p>
         <div class="footer-socials">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
           <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
@@ -1156,7 +1242,8 @@
         <h5>Dành Cho Quản Trị</h5>
         <ul class="footer-links">
           <li><a href="#" id="footerOpenCMS"><i class="fa-solid fa-gauge-high"></i> Bảng Thống Kê (Dashboard)</a></li>
-          <li><a href="#" id="footerPartnerRegister"><i class="fa-solid fa-briefcase"></i> Đăng Ký Lữ Hành Đối Tác</a></li>
+          <li><a href="#" id="footerPartnerRegister"><i class="fa-solid fa-briefcase"></i> Đăng Ký Lữ Hành Đối Tác</a>
+          </li>
           <li><a href="https://ninhbinh.gov.vn" target="_blank" rel="noopener">Cổng Thông Tin Tỉnh Ninh Bình</a></li>
         </ul>
       </div>
@@ -1213,8 +1300,10 @@
 
       <!-- Chat Input Form -->
       <form class="ai-chat-form" id="aiChatForm">
-        <input type="text" id="aiChatInput" placeholder="Hỏi AI bất kỳ điều gì về Ninh Bình..." required autocomplete="off">
-        <button type="submit" class="btn-send-msg" aria-label="Gửi tin nhắn"><i class="fa-solid fa-paper-plane"></i></button>
+        <input type="text" id="aiChatInput" placeholder="Hỏi AI bất kỳ điều gì về Ninh Bình..." required
+          autocomplete="off">
+        <button type="submit" class="btn-send-msg" aria-label="Gửi tin nhắn"><i
+            class="fa-solid fa-paper-plane"></i></button>
       </form>
     </div>
   </div>
@@ -1230,7 +1319,8 @@
           <i class="fa-solid fa-chart-pie modal-icon"></i>
           <div>
             <h3>Bảng Thống Kê & Báo Cáo Lưu Lượng — Sở Du Lịch</h3>
-            <span class="modal-sub">Dữ liệu thời gian thực phục vụ công tác điều hành & quản lý du lịch thông minh</span>
+            <span class="modal-sub">Dữ liệu thời gian thực phục vụ công tác điều hành & quản lý du lịch thông
+              minh</span>
           </div>
         </div>
         <button class="btn-modal-close" data-close="dashboardModal"><i class="fa-solid fa-xmark"></i></button>
@@ -1241,15 +1331,18 @@
         <div class="dashboard-metrics-grid">
           <div class="dash-metric-card">
             <span class="dash-lbl">Tổng lượt khách tra cứu tháng này</span>
-            <div class="dash-val">2.845.200 <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +18.4%</span></div>
+            <div class="dash-val">2.845.200 <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i>
+                +18.4%</span></div>
           </div>
           <div class="dash-metric-card">
             <span class="dash-lbl">Số lượt tạo Combo Lịch trình</span>
-            <div class="dash-val">148.900 <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +24.1%</span></div>
+            <div class="dash-val">148.900 <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i>
+                +24.1%</span></div>
           </div>
           <div class="dash-metric-card">
             <span class="dash-lbl">Tỷ lệ xuất file PDF / Đặt tour</span>
-            <div class="dash-val">34.2% <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +5.2%</span></div>
+            <div class="dash-val">34.2% <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +5.2%</span>
+            </div>
           </div>
           <div class="dash-metric-card">
             <span class="dash-lbl">Tỷ lệ khách quốc tế tra cứu</span>
@@ -1263,23 +1356,33 @@
           <div class="bar-chart-list">
             <div class="bar-row">
               <span class="bar-name">1. Quần thể Danh thắng Tràng An</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 92%;">92% quan tâm</div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 92%;">92% quan tâm</div>
+              </div>
             </div>
             <div class="bar-row">
               <span class="bar-name">2. Hang Múa (Check-in Đỉnh Rồng)</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 84%;">84% quan tâm</div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 84%;">84% quan tâm</div>
+              </div>
             </div>
             <div class="bar-row">
               <span class="bar-name">3. Quần thể Chùa Bái Đính</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 78%;">78% quan tâm</div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 78%;">78% quan tâm</div>
+              </div>
             </div>
             <div class="bar-row">
               <span class="bar-name">4. Tam Cốc – Bích Động</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 65%;">65% quan tâm</div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 65%;">65% quan tâm</div>
+              </div>
             </div>
             <div class="bar-row">
               <span class="bar-name">5. Phố Cổ Hoa Lư Về Đêm</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 58%;">58% quan tâm</div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width: 58%;">58% quan tâm</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1377,7 +1480,8 @@
 
           <div class="form-group">
             <label>Cam kết chất lượng dịch vụ & Giá niêm yết:</label>
-            <textarea rows="3" placeholder="Mô tả năng lực phục vụ, cam kết không chèo kéo, không tăng giá mùa cao điểm..."></textarea>
+            <textarea rows="3"
+              placeholder="Mô tả năng lực phục vụ, cam kết không chèo kéo, không tăng giá mùa cao điểm..."></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary btn-block btn-lg">
@@ -1399,7 +1503,8 @@
           <i class="fa-solid fa-file-invoice-dollar modal-icon"></i>
           <div>
             <h3>Kết Nối Đối Tác Lữ Hành Uy Tín</h3>
-            <span class="modal-sub">Gửi yêu cầu combo lịch trình của bạn đến các công ty du lịch được Sở Du Lịch bảo chứng</span>
+            <span class="modal-sub">Gửi yêu cầu combo lịch trình của bạn đến các công ty du lịch được Sở Du Lịch bảo
+              chứng</span>
           </div>
         </div>
         <button class="btn-modal-close" data-close="bookingConnectModal"><i class="fa-solid fa-xmark"></i></button>
@@ -1444,7 +1549,8 @@
           <button type="submit" class="btn btn-primary btn-block btn-lg pulse-glow">
             <i class="fa-solid fa-check-circle"></i> Nhận Tư Vấn & Giữ Chỗ Miễn Phí
           </button>
-          <p class="text-hint text-center mt-2"><i class="fa-solid fa-shield-heart"></i> Hoàn toàn miễn phí. Đối tác được Sở Du Lịch chứng nhận sẽ liên hệ trong 15 phút.</p>
+          <p class="text-hint text-center mt-2"><i class="fa-solid fa-shield-heart"></i> Hoàn toàn miễn phí. Đối tác
+            được Sở Du Lịch chứng nhận sẽ liên hệ trong 15 phút.</p>
         </form>
       </div>
     </div>
@@ -1501,11 +1607,13 @@
 
           <div class="form-group">
             <label>Chia sẻ cảm nhận & góp ý: <span class="req">*</span></label>
-            <textarea rows="3" required placeholder="Cảnh quan, thái độ phục vụ của người lái đò, vệ sinh môi trường..."></textarea>
+            <textarea rows="3" required
+              placeholder="Cảnh quan, thái độ phục vụ của người lái đò, vệ sinh môi trường..."></textarea>
           </div>
 
           <div class="alert-info-box">
-            <i class="fa-solid fa-circle-info"></i> Đánh giá của bạn sẽ được Sở Du Lịch kiểm duyệt trước khi hiển thị công khai để đảm bảo tính khách quan và văn minh.
+            <i class="fa-solid fa-circle-info"></i> Đánh giá của bạn sẽ được Sở Du Lịch kiểm duyệt trước khi hiển thị
+            công khai để đảm bảo tính khách quan và văn minh.
           </div>
 
           <button type="submit" class="btn btn-primary btn-block btn-lg">
@@ -1521,9 +1629,11 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <!-- Main Application Logic -->
   <script src="app.js"></script>
 </body>
+
 </html>

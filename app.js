@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAiChatbot();
   initModals();
   initMobileMenu();
+  initHeroSlideshow();
 });
 
 /* ==========================================================================
@@ -1035,3 +1036,48 @@ function escapeHtml(str) {
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
 }
+
+/* ==========================================================================
+   7. HERO DYNAMIC BACKGROUND SLIDESHOW
+   ========================================================================== */
+function initHeroSlideshow() {
+  const slides = document.querySelectorAll('#heroSlideshow .hero-slide');
+  const dots = document.querySelectorAll('#heroDots .hero-dot');
+  if (!slides.length) return;
+
+  let currentSlide = 0;
+  let slideInterval = null;
+
+  function goToSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    let nextIndex = (currentSlide + 1) % slides.length;
+    goToSlide(nextIndex);
+  }
+
+  function startTimer() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const targetIndex = parseInt(e.currentTarget.getAttribute('data-slide'), 10);
+      if (!isNaN(targetIndex)) {
+        goToSlide(targetIndex);
+        startTimer();
+      }
+    });
+  });
+
+  startTimer();
+}
+
